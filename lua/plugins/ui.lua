@@ -133,7 +133,7 @@ return {
 │ ╚══════╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝ │
 │                                                   │
 ╚───────────────────────────────────────────────────╝
-    [NeoVim build by gobur]
+[Power on NeoVim]
             ]],
                     keys = {
                         { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },

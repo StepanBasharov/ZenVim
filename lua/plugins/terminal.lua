@@ -20,7 +20,7 @@ return {
 
             vim.keymap.set(
       "n",                                 -- режим
-      "<leader>tr",                        -- сочетание
+      "<leader>t",                        -- сочетание
       "<cmd>ToggleTerm direction=float<CR>", -- действие
       { noremap = true, silent = true, desc = "Открыть терминал (float)" }
     )

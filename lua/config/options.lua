@@ -15,9 +15,9 @@ vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
-vim.keymap.set({ "n", "v" }, "<leader>d", '"+d', { noremap = true, silent = true, desc = "Delete to system clipboard" })
-vim.keymap.set("n", "<leader>p", '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, silent = true, desc = "Скопировать" })
+vim.keymap.set({ "n", "v" }, "<leader>d", '"+d', { noremap = true, silent = true, desc = "Вырезать" })
+vim.keymap.set("n", "<leader>p", '"+p', { noremap = true, silent = true, desc = "Вставить" })
 vim.keymap.set("n", "<leader>sl", vim.diagnostic.setloclist)
 vim.opt.spell = true
 vim.opt.spelllang = { "en", "ru" }
