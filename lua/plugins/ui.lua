@@ -28,13 +28,12 @@ return {
                 plugins = {
                     spelling = true,
                 },
-                window = {
+                win = {
                     border = "rounded",
-                    position = "bottom",
                 },
             })
 
-            wk.register({
+            wk.add({
                 { "<leader>f", group = "Find" },
                 { "<leader>t", group = "Toggle" },
             })
