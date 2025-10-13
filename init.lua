@@ -20,3 +20,5 @@ require("lazy").setup("plugins")
 
 -- визуальные настройки
 vim.cmd("colorscheme tokyonight")
+
+

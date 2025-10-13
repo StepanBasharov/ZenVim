@@ -62,6 +62,11 @@ return {
             map("<leader>du", dapui.toggle, "Toggle UI")
             map("<leader>dq", dap.terminate, "Terminate Debug Session")
 
+            vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "🟡", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "⚪", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "🟢", texthl = "", linehl = "debugPC", numhl = "" })
+vim.fn.sign_define("DapLogPoint", { text = "📍", texthl = "", linehl = "", numhl = "" })
             -- Поддержка Go
             require("dap-go").setup()
         end,

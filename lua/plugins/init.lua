@@ -27,40 +27,42 @@ return {
             require("nvim-treesitter.configs").setup(opts)
         end,
     },
-    {
-        "neovim/nvim-lspconfig",
-        config = function()
-            local lspconfig = require("lspconfig")
-            local on_attach = function(client, bufnr)
-                local buf_map = function(mode, lhs, rhs, desc)
-                    if desc then desc = "LSP: " .. desc end
-                    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
-                end
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+        local lspconfig = require("lspconfig")  -- оставляем require, чтобы setup работал
+        local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-                -- Go-to commands
-                buf_map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition")
-                buf_map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration")
-                buf_map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation")
-                buf_map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", "Go to References")
-                buf_map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover Info")
-                buf_map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Symbol")
+        local on_attach = function(client, bufnr)
+            local buf_map = function(mode, lhs, rhs, desc)
+                if desc then desc = "LSP: " .. desc end
+                vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
             end
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            lspconfig.gopls.setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                settings = {
-                    gopls = {
-                        analyses = { unusedparams = true, shadow = true },
-                        staticcheck = true,
-                        gofumpt = true,
-                    },
+            -- Go-to commands
+            buf_map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition")
+            buf_map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration")
+            buf_map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation")
+            buf_map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", "Go to References")
+            buf_map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover Info")
+            buf_map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Symbol")
+        end
+
+        -- Настройка gopls
+        lspconfig.gopls.setup({
+            on_attach = on_attach,
+            capabilities = cmp_capabilities,
+            settings = {
+                gopls = {
+                    analyses = { unusedparams = true, shadow = true },
+                    staticcheck = true,
+                    gofumpt = true,
                 },
-            })
-        end,
-    },
-    {
+            },
+        })
+    end,
+},
+   {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {

@@ -10,8 +10,8 @@ return {
                     globalstatus = true,
                 },
                 sections = {
-                    lualine_a = { { "mode", icon = "" } },
-                    lualine_b = { { "branch", icon = "" }, "diff", "diagnostics" },
+                    lualine_a = { { "mode", icon = "" } },
+                    lualine_b = { { "branch", icon = "󰊢" }, "diff", "diagnostics" },
                     lualine_c = {
                         {
                             "filename",
@@ -19,7 +19,7 @@ return {
                             symbols = { modified = " [+]", readonly = " " },
                         },
                     },
-                    lualine_x = { "filetype" },
+                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
                     lualine_y = { "progress" },
                     lualine_z = { "location" },
                 },
